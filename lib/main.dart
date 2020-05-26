@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutterplayground/pages/Detail.dart';
 import 'package:flutterplayground/pages/firstPage.dart';
+import 'package:flutterplayground/pages/function_page.dart';
 import 'package:flutterplayground/pages/secondPage.dart';
 import 'package:flutterplayground/pages/thirdPage.dart';
 import 'package:flutterplayground/router_config.dart';
+import 'package:provider/provider.dart';
 
 void main() =>
     runApp(MaterialApp(
@@ -26,7 +28,7 @@ class _MyHomePageState extends State<MyHomePage>
   @override
   void initState() {
     super.initState();
-    controller = new TabController(length: 3, vsync: this);
+    controller = new TabController(length: 4, vsync: this);
   }
 
   @override
@@ -37,9 +39,11 @@ class _MyHomePageState extends State<MyHomePage>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return
+      Scaffold(
       body: new TabBarView(children: <Widget>[
         firstPage(),
+        FunctionPage(),
         secondPage(),
         thirdPage()
       ],
@@ -52,6 +56,10 @@ class _MyHomePageState extends State<MyHomePage>
         Tab(
           text: "首页",
           icon: Icon(Icons.home),
+        ),
+        Tab(
+          text: "功能",
+          icon: Icon(Icons.info_outline),
         ),
         Tab(
           text: "列表",
